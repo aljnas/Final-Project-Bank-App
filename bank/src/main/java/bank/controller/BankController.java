@@ -1,0 +1,119 @@
+package bank.controller;
+
+
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import bank.controller.model.BankAccount;
+import bank.controller.model.BankClient;
+import bank.controller.model.BankData;
+import bank.service.BankService;
+import lombok.extern.slf4j.Slf4j;
+
+@RestController
+@RequestMapping("/bank")
+@Slf4j
+//Where  Input or output HTTP enter or leave the application.
+public class BankController {
+
+	@Autowired
+	private  BankService bankService;
+	
+	@PostMapping("/bank")
+	@ResponseStatus(code = HttpStatus.CREATED)  
+  public BankData createBank(
+		@RequestBody BankData bankData) {
+		log.info("Creating bank {}", bankData);
+		
+		return bankService.saveBank(bankData);
+	}
+
+	
+	
+	@PutMapping("/bank/{bankId}")
+	public BankData updateBank(@PathVariable Long bankId, @RequestBody BankData bankData) {
+		
+		
+		bankData.setBankId(bankId);
+		log.info("Updating bank {}",bankData);
+		
+		return bankService.saveBank(bankData);
+		
+}	
+	
+	@PostMapping("/bank/{bankId}/account")
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public BankAccount insertBankAccount(@PathVariable Long bankId,
+			     @RequestBody BankAccount bankAccount) {
+		log.info("Creating client () for bank with ID=()", bankAccount.getAccountId(), bankId);
+		
+		return bankService.saveAccount(bankId, bankAccount);
+
+	}	
+	@PutMapping("/bank/{bankId}/account")
+	
+	public BankAccount updateBankAccount(@PathVariable Long bankId, 
+			@RequestBody BankAccount bankAccount) {
+		log.info("Updating account () for bank with ID=()", bankAccount.getAccountId(), bankId);
+		
+		return bankService.saveAccount(bankId, bankAccount);
+	}
+	@PostMapping("/bank/{bankId}/client")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public BankClient insertBankClient(@PathVariable Long bankId, @RequestBody BankClient bankClient) {
+        log.info("Creating client {} for bank with ID={}", bankClient.getClientId(), bankId);
+        return bankService.saveClient(bankId, bankClient);
+    }
+
+    @PutMapping("/bank/{bankId}/client")
+    public BankClient updateBankClient(@PathVariable Long bankId, @RequestBody BankClient bankClient) {
+        log.info("Updating client {} for bank with ID={}", bankClient.getClientId(), bankId);
+        return bankService.saveClient(bankId, bankClient);
+    }
+
+    @GetMapping("/bank")
+    public List<BankData> listBanks(){
+    log.info("Listing all banks");
+   	return bankService.retrieveAllBanks();
+    }
+
+    @GetMapping("/bank/{bankId}")
+    public BankData getBankById(@PathVariable Long bankId) {
+    log.info("Retrieving bank whit ID={}", bankId);
+    return bankService.retrieveBankById(bankId);
+}
+    @DeleteMapping("/bank/{bankId}")
+    public  Map<String, String> deleteBankById(@PathVariable Long bankId) {
+    log.info("Received request to delete bank with ID: " + bankId + ".");
+
+        bankService.deleteBankById(bankId);
+        
+        return Map.of("Message", "Bank with ID=" + bankId +"was delete suscessfully.");
+       
+        
+    }
+    
+    }
+   
+		
+		
+		
+		
+		
+		
+		
+		
+

@@ -1,0 +1,14 @@
+package bank.controller.model;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+public class BankData {
+
+	
+	
+	
+	
+}

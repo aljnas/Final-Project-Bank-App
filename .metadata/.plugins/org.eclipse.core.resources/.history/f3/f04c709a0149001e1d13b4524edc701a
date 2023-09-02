@@ -1,0 +1,11 @@
+package bank.controller.model;
+
+import bank.entity.Account;
+
+public class BankAccount {
+
+	public BankAccount(Account account) {
+		// TODO Auto-generated constructor stub
+	}
+
+}

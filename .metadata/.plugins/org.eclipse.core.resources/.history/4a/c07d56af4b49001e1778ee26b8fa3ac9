@@ -1,0 +1,5 @@
+package bank.controller.error;
+
+public class GlobalErrorHandler {
+
+}

@@ -1,0 +1,61 @@
+package bank.entity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+@Entity
+@Data
+public class Client {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+
+			private Long clientId;
+			
+		    private String clientName;
+			private String clientLastName;
+			private String clientEmail;
+		/*@ManyToOne
+		@JoinColumn(name = "bank_id")
+			private Bank bank;
+		public Bank[] getBanks() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+}*/
+@EqualsAndHashCode.Exclude
+@ToString.Exclude
+@ManyToMany(mappedBy = "clients", cascade = CascadeType.PERSIST)
+private Set<Bank> banks = new HashSet<>();
+}
+
+	/*	@ManyToMany
+		@JoinTable(name = "client_account", 
+                joinColumns = @JoinColumn(name = "client_id"),
+                inverseJoinColumns = @JoinColumn(name = "account_id"))
+		private List<Account> accounts;
+		@EqualsAndHashCode.Exclude
+		@ToString.Exclude
+		@ManyToMany(mappedBy = "clients", cascade = CascadeType.PERSIST)
+		private Set<Bank> banks = new HashSet<>();
+	}
+*/
+		
+		
+	
+	
+		
+    
+
+	
+	

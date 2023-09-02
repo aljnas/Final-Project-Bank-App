@@ -1,0 +1,10 @@
+package bank.controller.model;
+@Data
+@NoArgsConstructor
+public class BankData {
+
+	
+	
+	
+	
+}

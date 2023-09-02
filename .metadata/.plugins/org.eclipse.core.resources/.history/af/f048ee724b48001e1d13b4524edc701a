@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    username: bank
+    password: bank
+    url: jdbc:mysql://localhost:3306/bank_balance
+    
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    
+ 

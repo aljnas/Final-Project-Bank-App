@@ -1,0 +1,10 @@
+package bank.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import pet.store.entity.Employee;
+
+public interface ClientDao {
+
+}
+public interface EmployeeDao extends JpaRepository<Employee, Long> {

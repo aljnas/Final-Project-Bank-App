@@ -1,0 +1,5 @@
+package bank.balance.entity;
+
+public class ClientAccount {
+
+}

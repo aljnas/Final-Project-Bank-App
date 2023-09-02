@@ -1,0 +1,16 @@
+package bank.controller.model;
+
+import bank.entity.Client;
+
+public class BankClient {
+
+	public BankClient(Client client) {
+
+		private Long clientId;
+		
+	    private String clientName;
+		private String clientLastName;
+		private String clientEmail;
+
+}
+}

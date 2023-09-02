@@ -1,0 +1,48 @@
+package bank.controller.model;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import bank.dao.AccountDao;
+import bank.entity.Account;
+import bank.entity.Bank;
+import bank.entity.Client;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import pet.store.controller.model.PetStoreCustomer;
+import pet.store.controller.model.PetStoreEmployee;
+import pet.store.entity.Customer;
+import pet.store.entity.Employee;
+import pet.store.entity.PetStore;
+
+@Data
+@NoArgsConstructor
+public class BankData {
+
+	private Long bankId;
+    
+	private String bankName;
+	private String bankAddress;
+	
+	private Set<BankClient> clients = new HashSet<>();
+	private Set<BankAccount> accounts = new HashSet<>();
+	
+	public BankData(Bank bank) {
+		bankId = bank.getBankId();
+		bankName = bank.getBankName();
+		bankAddress = bank.getBankAddress();
+	
+	
+	
+	
+	for (Client client : bank.getClients()) {
+		BankClient bankClient = new BankClient(client);
+		clients.add(bankClient);
+	}
+	 for (Account account: Account.getAccounts()) {
+		 BankAccount bankAccount = new BankAccount(account);
+		 accounts.add(bankAccount);
+	 }
+}
+}
+

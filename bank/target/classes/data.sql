@@ -1,0 +1,10 @@
+INSERT INTO account (account_number) VALUES ('12340901');
+INSERT INTO account (account_number) VALUES ('12340912');
+INSERT INTO account (account_number) VALUES ('12340983');
+INSERT INTO account (account_number) VALUES ('12340984');
+INSERT INTO account (account_number) VALUES ('12340985');
+INSERT INTO account (account_number) VALUES ('12340986');
+INSERT INTO account (account_number) VALUES ('12340987');
+INSERT INTO account (account_number) VALUES ('12340988');
+INSERT INTO account (account_number) VALUES ('12340989');
+INSERT INTO account (account_number) VALUES ('12340980');

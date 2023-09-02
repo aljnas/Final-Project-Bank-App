@@ -1,0 +1,33 @@
+package bank.balance.entity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import pet.store.entity.PetStore;
+
+@Entity
+@Data
+public class BankAccount {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	private Long accountId;
+	private Long accountNumber;
+	@EqualsAndHashCode.Exclude
+	@ToString.Exclude
+	@ManyToOne(cascade = CascadeType.ALL)
+	
+	@JoinColumn(name = "bank_account_id")
+	private BankAccount bankAccount;
+	
